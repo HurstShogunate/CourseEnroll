@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 
+#Opening silenium Window and inputting commands
 import webbrowser
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -10,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
+# Notifications (The Popup window that gives notifications)
 from tkinter import *
 from PIL import ImageTk, Image
 from PyQt5.QtWidgets import *
@@ -17,11 +19,13 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from win10toast import ToastNotifier
 
-
+#webdriver.chrome is because Window is a superclass 
 class Window(webdriver.Chrome):
 
     buttonAddAnotherClass = 'DERIVED_REGFRM1_SSR_LINK_STARTOVER'
     buttonEnroll = 'DERIVED_SSS_SCR_SSS_LINK_ANCHOR3'
+    #This is the button id from the webpage 
+    #to get this you need to obtain it by inspecting the element and looking at said ID= String
     buttonEnter = 'DERIVED_REGFRM1_SSR_PB_ADDTOLIST2$9$'
     buttonFinishEnrolling = 'DERIVED_REGFRM1_SSR_PB_SUBMIT'
     buttonStep2of3 = 'DERIVED_REGFRM1_LINK_ADD_ENRL$82$'
@@ -39,9 +43,12 @@ class Window(webdriver.Chrome):
         self.timeoutLag = .5
         self.timeout0 = .025
         self.loaded = False
+        #This start time is cool caus
         self.startTime = '09:00:00'  # 9 am EST
         self.isSuccessful = 'notYet'
+        #This takes care of banners and notificiations
         self.toaster = ToastNotifier()
+        #Everything after this is personal code
         self.login()
         self.term()
         #self.checkTime()
